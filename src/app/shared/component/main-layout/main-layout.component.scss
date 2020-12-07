@@ -1,0 +1,29 @@
+mat-toolbar{
+
+  padding: 0 50px;
+
+  display: flex;
+  justify-content: space-between;
+
+  span{
+    cursor: pointer;
+    outline: none;
+  }
+
+  ul{
+    list-style-type: none;
+    li{
+      cursor: pointer;
+      display: inline;
+      margin: 10px 10px;
+      outline: none;
+    }
+  }
+}
+
+.main-container{
+  min-width: 500px;
+  margin: 30px 80px;
+}
+
+
