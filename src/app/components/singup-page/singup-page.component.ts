@@ -54,16 +54,8 @@ export class SingupPageComponent implements OnInit {
       validators: ConfirmedValidator('password', 'confirmPassword')
     });
 
-    this.georgianCity();
   }
 
-  // tslint:disable-next-line:typedef
-  georgianCity(){
-    this.http.get<GeorgianCity[]>('https://gist.githubusercontent.com/NodarDavituri/f2b61ae7a3b4106811c2/raw/0ef240d13dc9d2968d4fd44feb70903ee54cb72d/georgian-cities.json')
-      .subscribe(city => {
-        this.georgianCitys = city;
-      });
-  }
 
   // tslint:disable-next-line:typedef
   singin(){
