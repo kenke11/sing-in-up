@@ -1,1 +1,45 @@
-<p>login-page works!</p>
+<div class="main-container">
+  <form [formGroup]="form">
+    <div>
+      <label for="email">ელ-ფოსტა</label>
+      <input type="email" id="email" formControlName="email">
+
+      <div
+        *ngIf="form.get('email').invalid && form.get('email').touched"
+        class="validation"
+      >
+        <small
+          *ngIf="form.get('email').errors.required"
+        >შეავსეთ ელ-ფოსტის ფანჯარა</small>
+
+        <small
+          *ngIf="form.get('email').errors.email"
+        >ელ-ფოსტა არ არის კორექტული</small>
+
+      </div>
+
+    </div>
+
+    <div>
+      <label for="pass">პაროლი</label>
+      <input type="password" id="pass" formControlName="password">
+
+      <div
+        *ngIf="form.get('password').invalid && form.get('password').touched"
+        class="validation"
+      >
+        <small
+          *ngIf="form.get('password').errors.required"
+        >შეავსეთ პაროლის ფანჯარა</small>
+
+        <small
+          *ngIf="form.get('password').errors.minlength"
+        >პაროლი უნდა აღემატებოდეს {{form.get('password').errors.minlength.requiredLength}} რიცხვს</small>
+      </div>
+    </div>
+
+    <div>
+      <button mat-raised-button color="primary">ავტორიზაცია</button>
+    </div>
+  </form>
+</div>

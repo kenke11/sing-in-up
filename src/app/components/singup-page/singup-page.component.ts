@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ConfirmedValidator, MyValidators} from './my.validators';
+import {HttpClient} from '@angular/common/http';
+
+export interface GeorgianCity {
+  name_ka: string;
+  name_en: string;
+  location?: number;
+  id?: number;
+}
 
 @Component({
   selector: 'app-singup-page',
@@ -6,10 +16,59 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./singup-page.component.scss']
 })
 export class SingupPageComponent implements OnInit {
+  form: FormGroup = new FormGroup({});
 
-  constructor() { }
+  georgianCitys: GeorgianCity[] = [];
 
-  ngOnInit(): void {
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      personalNumber: new FormControl('', [
+        Validators.required,
+        Validators.minLength(11)
+      ]),
+      birthday: new FormControl('', [Validators.required]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        MyValidators.existingEmails
+      ]),
+      password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(5)
+      ]),
+      geoCity: new FormGroup({
+        city: new FormControl('tbilisi')
+      }),
+      gender: new FormGroup({
+        gender: new FormControl('male')
+      })
+    }, {
+      validators: ConfirmedValidator('password', 'confirmPassword')
+    });
+
+    this.georgianCity();
+  }
+
+  // tslint:disable-next-line:typedef
+  georgianCity(){
+    this.http.get<GeorgianCity[]>('https://gist.githubusercontent.com/NodarDavituri/f2b61ae7a3b4106811c2/raw/0ef240d13dc9d2968d4fd44feb70903ee54cb72d/georgian-cities.json')
+      .subscribe(city => {
+        this.georgianCitys = city;
+      });
+  }
+
+  // tslint:disable-next-line:typedef
+  singin(){
+    console.log(this.form.value);
+    this.form.reset();
   }
 
 }

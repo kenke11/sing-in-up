@@ -1,0 +1,152 @@
+.main-container{
+
+  font-size: 17px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+
+
+  form{
+    margin: 50px auto;
+    background-color: #E7E7E7;
+    padding:50px 0 ;
+
+    box-shadow: 0px 0px 24px 12px rgba(0,0,0,0.81);
+    -webkit-box-shadow: 0px 0px 24px 12px rgba(0,0,0,0.81);
+    -moz-box-shadow: 0px 0px 24px 12px rgba(0,0,0,0.81);
+
+
+    .validation{
+      small{
+        color: red;
+      }
+    }
+
+
+    input{
+      height: 35px;
+      padding: 0 15px;
+      font-size: 18px;
+      outline: none;
+
+      &.ng-invalid.ng-touched{
+        border: 1px solid red;
+      }
+
+      &.ng-valid.ng-touched{
+        border: 1px solid green;
+      }
+
+    }
+
+    .first-last-name{
+      margin: 30px 0;
+      .user-name{
+        padding:0 40px;
+        width: 50%;
+
+        label{
+          width: 100%;
+        }
+        input{
+          width: 100%;
+        }
+      }
+    }
+
+
+    .personal-num-date{
+      margin: 30px 0;
+      .personal-inf{
+        padding:0 40px;
+        width: 50%;
+
+        label{
+          width: 100%;
+        }
+        input{
+          width: 100%;
+        }
+      }
+
+    }
+
+    .user-email-gender{
+      margin: 30px 0;
+      .user-e-g{
+        padding:0 40px;
+        width: 50%;
+
+        label{
+          width: 100%;
+        }
+        input{
+          width: 100%;
+        }
+
+        select{
+          width: 100%;
+          height: 35px;
+          font-size: 18px;
+          padding: 0 15px;
+        }
+
+      }
+    }
+
+    .city{
+      padding:0 40px;
+      width: 100%;
+
+      label{
+        width: 100%;
+      }
+      input{
+        width: 100%;
+      }
+
+      select{
+        width: 100%;
+        height: 35px;
+        font-size: 18px;
+        padding: 0 15px;
+      }
+    }
+
+    .user-password{
+      margin: 30px 0;
+      .user-pass{
+        padding:0 40px;
+        width: 50%;
+
+        label{
+          width: 100%;
+        }
+        input{
+          width: 100%;
+        }
+
+      }
+    }
+
+    .button-reg{
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      margin: 50px 0;
+
+      a{
+        font-size: 15px;
+      }
+
+      button{
+        font-size: 18px;
+      }
+    }
+  }
+
+
+
+
+}
